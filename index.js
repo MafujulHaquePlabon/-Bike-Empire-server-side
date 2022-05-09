@@ -37,6 +37,7 @@ try{
         const result = await inventoryItemsCollection.findOne(query);
         res.send(result);
     });
+    //Delete API
     app.delete('/inventoryItems/:id', async(req, res) =>{
         const id = req.params.id;
         const query = {_id: ObjectId(id)};
@@ -51,8 +52,6 @@ try{
     });
 
 }
-     
-
 finally{
 
 }
