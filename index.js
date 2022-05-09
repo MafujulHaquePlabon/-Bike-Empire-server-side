@@ -31,12 +31,20 @@ try{
         const ManageInventories = await cursor.toArray();
         res.send(ManageInventories);
     });
-    app.get('/ManageInventories/:id', async(req, res) =>{
+    app.get('/inventoryItems/:id', async(req, res) =>{
         const id = req.params.id;
         const query = {_id:ObjectId(id)};
         const result = await inventoryItemsCollection.findOne(query);
         res.send(result);
     });
+    app.delete('/inventoryItems/:id', async(req, res) =>{
+        const id = req.params.id;
+        const query = {_id: ObjectId(id)};
+        const result = await userCollection.deleteOne(query);
+        res.send(result);
+    })
+
+}
      
 }
 finally{
