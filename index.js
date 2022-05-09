@@ -40,9 +40,15 @@ try{
     app.delete('/inventoryItems/:id', async(req, res) =>{
         const id = req.params.id;
         const query = {_id: ObjectId(id)};
-        const result = await userCollection.deleteOne(query);
+        const result = awaitinventoryItemsCollection.deleteOne(query);
         res.send(result);
-    })
+    });
+    app.post('/inventoryItems', async(req, res) =>{
+        const newItem = req.body;
+        console.log('add new items', newItem);
+        const result = await inventoryItemsCollection.insertOne(newItem);
+        res.send(result)
+    });
 
 }
      
