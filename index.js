@@ -7,7 +7,13 @@ const app =express();
 
 // Middlewares
 
-app.use(cors());
+const corsConfig = {
+    origin: true,
+    credentials: true,
+  }
+  app.use(cors(corsConfig))
+  app.options('*', cors(corsConfig)) 
+//app.use(cors());
 app.use(express.json());
 
 
