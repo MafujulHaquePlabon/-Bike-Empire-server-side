@@ -50,7 +50,7 @@ try{
         const id = req.params.id;
         const query = {_id: ObjectId(id)};
         const result = await inventoryItemsCollection.deleteOne(query);
-        console.log('sucess')
+        console.log('connect sucess')
         res.send(result);
     });
     app.post('/ManageInventories', async(req, res) =>{
