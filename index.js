@@ -46,15 +46,15 @@ try{
         res.send(result);
     });
     //Delete API
-    app.delete('/inventoryItems/:id', async(req, res) =>{
+    app.delete('/ManageInventories/:id', async(req, res) =>{
         const id = req.params.id;
         const query = {_id: ObjectId(id)};
-        const result = awaitinventoryItemsCollection.deleteOne(query);
+        const result = await inventoryItemsCollection.deleteOne(query);
         res.send(result);
     });
-    app.post('/inventoryItems', async(req, res) =>{
+    app.post('/ManageInventories', async(req, res) =>{
         const newItem = req.body;
-      
+        console.log('adding new item',newItem);
         const result = await inventoryItemsCollection.insertOne(newItem);
         res.send(result)
     });
