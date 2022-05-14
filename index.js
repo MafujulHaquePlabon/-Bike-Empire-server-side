@@ -53,6 +53,22 @@ try{
         console.log('connect sucess')
         res.send(result);
     });
+
+    app.put('/inventoryItems/:id', async(req, res) =>{
+        const id = req.params.id;
+        const updatedInventoryItems = req.body;
+        const filter = {_id: ObjectId(id)};
+        const options = { upsert: true };
+        const updatedDoc = {
+            $set: {
+                quantity: updatedInventoryItems.quantity
+               
+            }
+        };
+        const result = await inventoryItemsCollection.updateOne(filter, updatedDoc, options);
+        res.send(result);
+
+    })
     app.post('/ManageInventories', async(req, res) =>{
         const newItem = req.body;
         console.log('adding new item',newItem);
